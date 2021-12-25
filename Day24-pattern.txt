@@ -1,0 +1,18 @@
+inp w
+mul x 0       x=0
+add x z       x=z
+mod x 26      x=z%26
+div z (1|26)  z=(z|z/26)
+add x A       x=z%26 + A
+eql x w       if w == z%26 + A then   x=1   else   x=0
+eql x 0       if w == z%26 + A then   x=0   else   x=1
+mul y 0       y=0
+add y 25      y=25
+mul y x       if w == z%26 + A then   y=0   else   y=25
+add y 1       if w == z%26 + A then   y=1   else   y=26
+mul z y       if w == z%26 + A then   z=(z|z/26)   else   z=(z|z/26)*26
+mul y 0       y=0
+add y w       y=w
+add y B       y=w+B
+mul y x       if w == z%26 + A then   y=0   else   y=w+B
+add z y       if w == z%26 + A then   z=(z|z/26)   else   z=(z|z/26)*26+w+B
